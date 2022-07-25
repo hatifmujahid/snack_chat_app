@@ -12,22 +12,55 @@ class Signin extends StatelessWidget {
     return Scaffold(
       
       appBar: AppBar(
-        title: Text('SignIn'),
+        centerTitle: true,
+        title: Text('SignIn 🔐'),
         
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
-            TextField(
-              
-              controller: emailController,
-              decoration: InputDecoration(labelText: 'Email'),
+            const Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "\nWelcome\n",
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 30,
+                ),
+              ),
             ),
-            TextField(
+            const Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Enter your email address to sign in.\nEnjoy the conversation!\n",
+                style: TextStyle(
+                  fontWeight: FontWeight.w200,
+                  fontSize: 20,
+                ),
+              ),
+            ),
 
-              controller: passwordController,
-              decoration: InputDecoration(labelText: 'Password',hintText: 'Enter Password'),
+            Container(
+              margin: EdgeInsets.only(left: 20,right: 20),
+              child: TextField(
+                controller: emailController,
+                decoration: const InputDecoration(
+                  hintText: 'Email',
+                  icon: Icon(Icons.email, color: Color.fromARGB(255, 77, 105, 78),),
+                  
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 20, left: 20),
+              child: TextField(
+                controller: passwordController,
+                decoration: InputDecoration(
+                  hintText: 'Password', 
+                  icon: Icon(Icons.key,color: Color.fromARGB(255, 77, 105, 78),)
+                ),
+              ),
             ),
           ],
         ),
