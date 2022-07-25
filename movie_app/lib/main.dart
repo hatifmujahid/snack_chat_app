@@ -32,7 +32,9 @@ class loginApp extends StatelessWidget {
       ],
       child:  MaterialApp(
         title: 'Flutter Demo',
+        
         theme: ThemeData(
+          
           brightness: Brightness.dark
         ),
         debugShowCheckedModeBanner: false,

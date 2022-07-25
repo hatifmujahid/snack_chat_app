@@ -15,29 +15,32 @@ class Signin extends StatelessWidget {
         title: Text('SignIn'),
         
       ),
-      body: Column(
-        children: <Widget>[
-          TextField(
-            
-            controller: emailController,
-            decoration: InputDecoration(labelText: 'Email'),
-          ),
-          TextField(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: <Widget>[
+            TextField(
+              
+              controller: emailController,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            TextField(
 
-            controller: passwordController,
-            decoration: InputDecoration(labelText: 'Password'),
-          ),
-          ElevatedButton(
+              controller: passwordController,
+              decoration: InputDecoration(labelText: 'Password',hintText: 'Enter Password'),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
             onPressed: () {
               context.read<AuthenticationService>().signIn(
                 email: emailController.text.trim(),
                 password: passwordController.text.trim(),
               );
-            }, 
-            child: Text('Sign in')
+            }, backgroundColor: Colors.blue,
+            child: Icon(Icons.login_outlined, color: Colors.black,)
           ),
-        ],
-      ),
     );
   }
 }
