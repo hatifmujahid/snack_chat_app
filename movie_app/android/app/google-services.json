@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "853471875015",
+    "project_id": "chat-app-1d30c",
+    "storage_bucket": "chat-app-1d30c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853471875015:android:3a54797622b917fcab93e2",
+        "android_client_info": {
+          "package_name": "com.example.movie_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853471875015-4vaokg1eo39i1k3gsoqf3ge9rm3io4j6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIcJ10PMpvw0Fr_LjJJtdWbNMYwRH5P3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853471875015-4vaokg1eo39i1k3gsoqf3ge9rm3io4j6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
