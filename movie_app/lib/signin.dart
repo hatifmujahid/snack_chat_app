@@ -11,7 +11,10 @@ class Signin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       
-      appBar: AppBar(title: Text('SignIn')),
+      appBar: AppBar(
+        title: Text('SignIn'),
+        
+      ),
       body: Column(
         children: <Widget>[
           TextField(
@@ -20,6 +23,7 @@ class Signin extends StatelessWidget {
             decoration: InputDecoration(labelText: 'Email'),
           ),
           TextField(
+
             controller: passwordController,
             decoration: InputDecoration(labelText: 'Password'),
           ),
