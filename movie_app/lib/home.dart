@@ -1,7 +1,11 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/Authentication_service.dart';
+import 'package:movie_app/chat.dart';
 import 'package:movie_app/signin.dart';
 import 'package:provider/provider.dart';
+import 'package:movie_app/chat.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -20,10 +24,20 @@ class Home extends StatelessWidget {
           child: Column(
             
             children: <Widget>[
-              
-              donuts(),
-              Divider(color: Colors.grey),
-              frenchFries()
+              InkWell(
+                child: Donuts(),
+                onTap: (){
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(
+                      builder: (_) => const Chat()
+                    ),
+                    
+                  );
+                },
+              ),
+              frenchFries(),
+              Pizza(),
             ],
           ),
         ),
@@ -40,15 +54,16 @@ class Home extends StatelessWidget {
 }
 
 
-Widget donuts(){
+Widget Donuts(){
   return Container(
     height: 70,
+    margin: EdgeInsets.all(10),
     width: double.infinity,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(100),
         boxShadow: [
           BoxShadow(
-            color: Color(0x80000000),
+            color: const Color(0x80000000),
             blurRadius: 12.0,
             offset: Offset(0.0, 5.0),
           ),
@@ -57,11 +72,12 @@ Widget donuts(){
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color.fromARGB(255, 66, 20, 1),
-            Color.fromARGB(255, 125, 74, 32)
+            Color.fromARGB(255, 180, 64, 1),
+            Color.fromARGB(255, 238, 1, 222)
           ],
         )
       ),
+     
       child: Center(
         child: Text(
           "Donuts 🍩",
@@ -76,6 +92,7 @@ Widget donuts(){
 Widget frenchFries(){
   return Container(
     height: 70,
+    margin: EdgeInsets.all(10),
     width: double.infinity,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(100),
@@ -98,6 +115,41 @@ Widget frenchFries(){
       child: Center(
         child: Text(
           "French Fries 🍟",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+      ),
+      
+    );
+}
+Widget Pizza(){
+  return Container(
+    height: 70,
+    margin: EdgeInsets.all(10),
+    width: double.infinity,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(100),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x80000000),
+            blurRadius: 12.0,
+            offset: Offset(0.0, 5.0),
+          ),
+        ],
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color.fromARGB(255, 247, 0, 0),
+            Color.fromARGB(255, 43, 255, 1)
+          ],
+        )
+      ),
+      child: Center(
+        child: Text(
+          "Pizza 🍕",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
