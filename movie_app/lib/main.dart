@@ -35,7 +35,7 @@ class loginApp extends StatelessWidget {
       child:  MaterialApp(       
         theme: ThemeData(
           
-          brightness: Brightness.dark
+          
         ),
         debugShowCheckedModeBanner: false,
         home: AuthenticationWrapper(),

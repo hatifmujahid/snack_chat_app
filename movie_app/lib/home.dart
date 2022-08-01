@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context, 
                     MaterialPageRoute(
-                      builder: (_) => const Chat()
+                      builder: (_) => Chat()
                     ),
                     
                   );

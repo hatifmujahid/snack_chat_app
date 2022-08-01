@@ -67,6 +67,7 @@ class Signin extends StatelessWidget {
                 margin: EdgeInsets.only(right: 20, left: 20),
                 child: TextField(
                   controller: passwordController,
+                  keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                     hintText: 'Password',
                     focusColor: Colors.black, 
