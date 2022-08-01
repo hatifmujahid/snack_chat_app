@@ -74,7 +74,7 @@ class Chat extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 11, 138, 241),
+          backgroundColor: Color.fromARGB(255, 0, 0, 0),
           leading: InkWell(
             onTap: () {
               Navigator.pop(context, const Home());
@@ -115,6 +115,7 @@ class Chat extends StatelessWidget {
             Expanded(
               child: GroupedListView<Message, DateTime>(
                 padding: EdgeInsets.all(8),
+                physics: NeverScrollableScrollPhysics(),
                 reverse: true,
                 order: GroupedListOrder.DESC,
                 elements: messages,
@@ -122,16 +123,37 @@ class Chat extends StatelessWidget {
                     message.Date.year, message.Date.month, message.Date.day),
                 groupHeaderBuilder: (Message message) => SizedBox(
                   child: Align(
-                    alignment: Alignment.center,
+                    alignment: Alignment.topCenter,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Card(
                         margin: EdgeInsets.all(8),
-                        color: Colors.black,
-                        child: Text(
-                          '${fromDatetoString(message.Date.month)} ${message.Date.day.toString()},${message.Date.year.toString()}',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 17,),
+                        child: Container(
+                          decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(128, 94, 91, 91),
+                                blurRadius: 2,
+                                offset: Offset(0.0, 2.0),
+                              ),
+                            ],
+                            gradient: const LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color.fromARGB(255, 87, 83, 83),
+                                Color.fromARGB(255, 116, 126, 119)
+                              ],
+                            )
+                          ),
+                          height: 25,
+                          width: 150,
+                          child: Text(
+                            '${fromDatetoString(message.Date.month)} ${message.Date.day.toString()}, ${message.Date.year.toString()}',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white, fontSize: 17,fontWeight: FontWeight.w900),
+                          ),
                         ),
                       ),
                     ),
@@ -150,7 +172,7 @@ class Chat extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           Text(
-                            message.name,
+                            '${message.name}',
                             style: TextStyle(fontSize: 9,color:message.isSentbyMe?Colors.black:Colors.grey),
                           ),
                           Text(message.text),
@@ -183,15 +205,15 @@ class Chat extends StatelessWidget {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        contentPadding: EdgeInsets.all(8),
+                        contentPadding: EdgeInsets.all(10),
                         hintText: 'Write message...',
                         hintStyle: TextStyle()),
                   ),
                   leading: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Icon(Icons.add),
                   ),
-                  trailing: ElevatedButton(
+                  trailing: TextButton(
                     onPressed: (() {
                       // final smth = Message(
                       //     Date: DateTime.now(),

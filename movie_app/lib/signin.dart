@@ -12,13 +12,12 @@ class Signin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         centerTitle: true,
         title: Text('SignIn 🔐'),
-        
       ),
       body: SingleChildScrollView(
         child: Padding(
-          
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -44,58 +43,72 @@ class Signin extends StatelessWidget {
                   ),
                 ),
               ),
-      
               Container(
-                
-                margin: EdgeInsets.only(left: 20,right: 20, top:10, bottom: 10),
-                child: TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(focusColor: Colors.white,
-                    enabledBorder:  OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(100),
-                      borderSide: BorderSide(
-                        color: Colors.green
-                      )
-                    ),
-                    hintText: 'Email',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(100))
+                margin:
+                    EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                child: Card(
+                  elevation: 8,
+                  child: TextField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                        focusColor: Colors.white,
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 5, 255, 13))),
+                        hintText: 'Email',
+                        border: OutlineInputBorder()),
                   ),
                 ),
               ),
               Container(
-                
                 margin: EdgeInsets.only(right: 20, left: 20),
-                child: TextField(
-                  controller: passwordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    focusColor: Colors.black, 
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(100), 
-                      borderSide: BorderSide(
-                        color: Colors.green
-                      )
+                child: Card(
+                  elevation: 8,
+                  child: TextField(
+                    controller: passwordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      focusColor: Colors.black,
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(255, 5, 255, 13))),
                     ),
                   ),
                 ),
               ),
+              Container(
+                
+                height: 370,
+                width: 510,
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(50),
+                child: Row(
+                  children: <Widget>[
+                    Image.network('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',height: 40,),
+                    Text('|',style: TextStyle(fontSize: 23,fontWeight: FontWeight.w900)),
+                    Text('Developed By Hatif Mujahid',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              )
               
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        
-            onPressed: () {
-              context.read<AuthenticationService>().signIn(
-                email: emailController.text.trim(),
-                password: passwordController.text.trim(),
-              );
-            }, backgroundColor: Colors.blue,
-             child: Icon(Icons.login_outlined, color: Colors.black,)
-          ),
+          onPressed: () {
+            context.read<AuthenticationService>().signIn(
+                  email: emailController.text.trim(),
+                  password: passwordController.text.trim(),
+                );
+          },
+          backgroundColor: Colors.blue,
+          child: Icon(
+            Icons.login_outlined,
+            color: Colors.black,
+          )),
     );
   }
 }

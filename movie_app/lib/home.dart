@@ -13,9 +13,30 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Color.fromARGB(255, 142, 0, 90),
+        unselectedItemColor: Colors.grey.shade600,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
+        unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),backgroundColor: Colors.black,
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            label: 'Chats',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group_work),
+            label: "Channels",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box),
+            label: "Profile",
+          ),
+        ],
+      ),
       appBar: AppBar(
-        title: Text("Snack Chat App",textAlign: TextAlign.center,style: TextStyle(fontFamily: 'Times New Roman'),),
+        backgroundColor: Colors.black,
+        title: Text("Snack Chat App🍴",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w700),),
         centerTitle: true,
       ),
       body: Padding(
@@ -47,7 +68,7 @@ class Home extends StatelessWidget {
           context.read<AuthenticationService>().SignOut();
         },
         
-        child: Icon(Icons.logout),
+        child: Icon(Icons.logout,color: Colors.black,),
       ),
     );
   }
