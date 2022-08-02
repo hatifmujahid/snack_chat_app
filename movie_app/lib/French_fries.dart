@@ -31,54 +31,55 @@ class French_Fries_chat extends StatelessWidget {
         text: "Hello Everyone!",
         emoji: false),
     French_fry_Message(
-      Date: DateTime.now().subtract(Duration(days: 1, minutes: 4)),
+      Date: DateTime.now().subtract(Duration(days: 1, minutes: 4,hours: 13)),
       isSentbyMe: false,
       name: "Ali",
-      text: "Yo! 👋",
+      text: "KFC is overrated 😡",
       emoji: false
     ),
     French_fry_Message(
-      Date: DateTime.now(),
-      isSentbyMe: false,
-      name: "Faizan",
-      text: "Welcome to the French Fries chat🍟!",
+      Date: DateTime.now().subtract(Duration(minutes: 13)),
+      isSentbyMe: true,
+      name: "Hatif",
+      text: "Yo guys!",
       emoji: false
     ),
     French_fry_Message(
-      Date: DateTime.now(),
+      Date: DateTime.now().subtract(Duration(minutes: 12)),
+      isSentbyMe: true,
+      name: "Hatif",
+      text: " 🍟 ",
+      emoji: true
+    ),
+    French_fry_Message(
+      Date: DateTime.now().add(Duration(minutes: 20)),
       isSentbyMe: false,
       name: "Ahmad",
       text: "Hope you like French Fries!",
       emoji: false
     ),
     French_fry_Message(
-      Date: DateTime.now(),
+      Date: DateTime.now().add(Duration(minutes: 25)),
       isSentbyMe: true,
       name: "Hatif",
       text: "I love French Fries!",
       emoji: false
     ),
     French_fry_Message(
-      Date: DateTime.now(),
+      Date: DateTime.now().add(Duration(minutes: 30)),
       isSentbyMe: false,
       name: "Faizan",
       text: "Oh, from where exactly?",
       emoji: false
     ),
     French_fry_Message(
-      Date: DateTime.now(),
+      Date: DateTime.now().add(Duration(minutes: 32)),
       isSentbyMe: true,
       name: "Hatif",
       text: "McDonald's is my favorite",
       emoji:false
     ),
-    French_fry_Message(
-      Date: DateTime.now(),
-      isSentbyMe: true,
-      name: "Hatif",
-      text: " 🍟 ",
-      emoji: true
-    ),
+    
   ];
   @override
   Widget build(BuildContext context) {
@@ -187,8 +188,12 @@ class French_Fries_chat extends StatelessWidget {
                     alignment: message.isSentbyMe
                         ? Alignment.centerRight
                         : Alignment.centerLeft,
+                    
                     child: Card(
                       elevation: 8,
+                       shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)
+                      ),
                       color:
                           message.isSentbyMe ? Colors.blueAccent : Colors.white,
                       child: Padding(
@@ -243,7 +248,7 @@ class French_Fries_chat extends StatelessWidget {
                     ),
                     leading: InkWell(
                       enableFeedback: true,splashColor: Colors.black,
-                      child: Image.asset('assets/images/frenchfries.png')
+                      child: Image.asset('assets/images/frenchfries.png',height: 40,)
                     ),
                     trailing: TextButton(
                       onPressed: (() {

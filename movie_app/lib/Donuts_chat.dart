@@ -20,7 +20,7 @@ class Message {
 
 class Chat extends StatelessWidget {
   Chat({Key? key}) : super(key: key);
-  final myController = TextEditingController();
+  final TextEditingController myController = TextEditingController();
   List<Message> messages = [
     Message(
         Date: DateTime.now().subtract(Duration(days: 1, minutes: 2)),
@@ -181,6 +181,9 @@ class Chat extends StatelessWidget {
                       elevation: 8,
                       color:
                           message.isSentbyMe ? Colors.blueAccent : Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)
+                      ),
                       child: Padding(
                         
                         padding: EdgeInsets.all(8),
@@ -229,19 +232,16 @@ class Chat extends StatelessWidget {
                           contentPadding: EdgeInsets.all(10),
                           hintText: 'Write message...',
                           hintStyle: TextStyle()),
+                          
                     ),
                     leading: InkWell(
                       enableFeedback: true,splashColor: Colors.black,
-                      child: Image.asset('assets/images/smth.png')
+                      child: Text('🍩',style: TextStyle(fontSize: 30),)
                     ),
                     trailing: TextButton(
                       onPressed: (() {
-                        // final smth = Message(
-                        //     Date: DateTime.now(),
-                        //     isSentbyMe: true,
-                        //     name: 'Hatif',
-                        //     text: myController.text);
-                        // setState(() => messages.add(smth));
+                        _setText();
+
                       }),
                       child: Icon(Icons.send),
                     ),
@@ -253,7 +253,19 @@ class Chat extends StatelessWidget {
         ));
   }
 
-  void setState(Function() param0) {}
+   void _setText() {
+    setState(() {
+      String ist=myController.text;
+      final smth = Message(
+          Date: DateTime.now(),
+          isSentbyMe: true,
+          name: 'Hatif',
+          text: ist);
+        messages.add(smth);
+    });
+  }
+
+  void setState(Null Function() param0) {}
 }
 
 String fromDatetoString(int date) {
