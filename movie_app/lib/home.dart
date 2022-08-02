@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Authentication_service.dart';
 import 'package:movie_app/Donuts_chat.dart';
+import 'package:movie_app/French_fries.dart';
 import 'package:movie_app/signin.dart';
 import 'package:provider/provider.dart';
 import 'package:movie_app/Donuts_chat.dart';
@@ -57,7 +58,12 @@ class Home extends StatelessWidget {
                   );
                 },
               ),
-              frenchFries(),
+              InkWell(
+                child: frenchFries(),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>French_Fries_chat()));
+                },
+              ),
               Pizza(),
             ],
           ),

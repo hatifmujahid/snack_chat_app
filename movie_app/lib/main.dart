@@ -34,7 +34,7 @@ class loginApp extends StatelessWidget {
       ],
       child:  MaterialApp(       
         theme: ThemeData(
-          
+          pageTransitionsTheme: PageTransitionsTheme(builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder()})
           
         ),
         debugShowCheckedModeBanner: false,
