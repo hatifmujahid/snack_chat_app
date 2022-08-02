@@ -110,140 +110,146 @@ class Chat extends StatelessWidget {
             )
           ],
         ),
-        body: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: GroupedListView<Message, DateTime>(
-                padding: EdgeInsets.all(8),
-                physics: NeverScrollableScrollPhysics(),
-                reverse: true,
-                order: GroupedListOrder.DESC,
-                elements: messages,
-                groupBy: (message) => DateTime(
-                    message.Date.year, message.Date.month, message.Date.day),
-                groupHeaderBuilder: (Message message) => SizedBox(
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Card(
-                        margin: EdgeInsets.all(8),
-                        child: Container(
-                          
-                          decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color.fromARGB(128, 94, 91, 91),
-                                blurRadius: 12,
-                                offset: Offset(0.0, 5.0),
-                              ),
-                            ],
-                            gradient: const LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                Color.fromARGB(255, 255, 255, 255),
-                                Color.fromARGB(255, 255, 255, 255)
+        body: Container(
+          decoration:  BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/images/background_chat.png'),fit: BoxFit.cover)
+            
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: GroupedListView<Message, DateTime>(
+                  padding: EdgeInsets.all(8),
+                  physics: NeverScrollableScrollPhysics(),
+                  reverse: true,
+                  order: GroupedListOrder.DESC,
+                  elements: messages,
+                  groupBy: (message) => DateTime(
+                      message.Date.year, message.Date.month, message.Date.day),
+                  groupHeaderBuilder: (Message message) => SizedBox(
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Card(
+                          margin: EdgeInsets.all(8),
+                          child: Container(
+                            
+                            decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(128, 94, 91, 91),
+                                  blurRadius: 12,
+                                  offset: Offset(0.0, 5.0),
+                                ),
                               ],
-                            )
-                          ),
-                          height: 25,
-                          width: 100,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                '${fromDatetoString(message.Date.month)} ${message.Date.day.toString()}, ${message.Date.year.toString()}',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(color: Color.fromARGB(255, 101, 101, 101), fontSize: 14,fontWeight: FontWeight.w500),
-                              ),
-                            ],
+                              gradient: const LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Color.fromARGB(255, 255, 255, 255),
+                                  Color.fromARGB(255, 255, 255, 255)
+                                ],
+                              )
+                            ),
+                            height: 25,
+                            width: 100,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '${fromDatetoString(message.Date.month)} ${message.Date.day.toString()}, ${message.Date.year.toString()}',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Color.fromARGB(255, 101, 101, 101), fontSize: 14,fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                itemBuilder: (context, Message message) => Align(
-                  alignment: message.isSentbyMe
-                      ? Alignment.centerRight
-                      : Alignment.centerLeft,
-                  child: Card(
-                    elevation: 8,
-                    color:
-                        message.isSentbyMe ? Colors.blueAccent : Colors.white,
-                    child: Padding(
-                      
-                      padding: EdgeInsets.all(8),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: message.isSentbyMe?CrossAxisAlignment.end:CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            '${message.name}',
-                            style: TextStyle(fontSize: 9,color:message.isSentbyMe?Colors.black:Colors.grey),textAlign: TextAlign.left,
-                          ),
-                          Text(message.text,  style: TextStyle(fontSize: 13,),textAlign: TextAlign.left,),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 3),
-                            child: Text('${message.Date.hour.toString()}:${message.Date.minute.toString()}', style: TextStyle(fontSize: 9,color:message.isSentbyMe?Colors.black:Colors.grey),textAlign: TextAlign.left,),
-                          )                            
-                        ],
+                  itemBuilder: (context, Message message) => Align(
+                    alignment: message.isSentbyMe
+                        ? Alignment.centerRight
+                        : Alignment.centerLeft,
+                    child: Card(
+                      elevation: 8,
+                      color:
+                          message.isSentbyMe ? Colors.blueAccent : Colors.white,
+                      child: Padding(
+                        
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: message.isSentbyMe?CrossAxisAlignment.end:CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              '${message.name}',
+                              style: TextStyle(fontSize: 9,color:message.isSentbyMe?Colors.black:Colors.grey),textAlign: TextAlign.left,
+                            ),
+                            Text(message.text,  style: TextStyle(fontSize: 13,),textAlign: TextAlign.left,),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 3),
+                              child: Text('${message.Date.hour.toString()}:${message.Date.minute.toString()}', style: TextStyle(fontSize: 9,color:message.isSentbyMe?Colors.black:Colors.grey),textAlign: TextAlign.left,),
+                            )                            
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Align(
-              //bottom text stuff
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                    boxShadow: [
-                      BoxShadow(
-                          blurRadius: 32,
-                          offset: Offset(0, 4),
-                          color: Color.fromARGB(255, 8, 40, 121)
-                              .withOpacity(0.08)),
-                    ]),
-                height: 60,
-                width: 2000,
-                child: ListTile(
-                  title: TextField(
-                    controller: myController,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        contentPadding: EdgeInsets.all(10),
-                        hintText: 'Write message...',
-                        hintStyle: TextStyle()),
-                  ),
-                  leading: InkWell(
-                    enableFeedback: true,splashColor: Colors.black,
-                    child: Image.asset('assets/images/smth.png')
-                  ),
-                  trailing: TextButton(
-                    onPressed: (() {
-                      // final smth = Message(
-                      //     Date: DateTime.now(),
-                      //     isSentbyMe: true,
-                      //     name: 'Hatif',
-                      //     text: myController.text);
-                      // setState(() => messages.add(smth));
-                    }),
-                    child: Icon(Icons.send),
+              Align(
+                //bottom text stuff
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 32,
+                            offset: Offset(0, 4),
+                            color: Color.fromARGB(255, 8, 40, 121)
+                                .withOpacity(0.08)),
+                      ]),
+                  height: 60,
+                  width: 2000,
+                  child: ListTile(
+                    title: TextField(
+                      controller: myController,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          contentPadding: EdgeInsets.all(10),
+                          hintText: 'Write message...',
+                          hintStyle: TextStyle()),
+                    ),
+                    leading: InkWell(
+                      enableFeedback: true,splashColor: Colors.black,
+                      child: Image.asset('assets/images/smth.png')
+                    ),
+                    trailing: TextButton(
+                      onPressed: (() {
+                        // final smth = Message(
+                        //     Date: DateTime.now(),
+                        //     isSentbyMe: true,
+                        //     name: 'Hatif',
+                        //     text: myController.text);
+                        // setState(() => messages.add(smth));
+                      }),
+                      child: Icon(Icons.send),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ));
   }
 

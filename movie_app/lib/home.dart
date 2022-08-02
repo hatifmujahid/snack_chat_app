@@ -13,7 +13,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(backgroundColor: Colors.grey,
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Color.fromARGB(255, 142, 0, 90),
         unselectedItemColor: Colors.grey.shade600,
@@ -65,6 +65,8 @@ class Home extends StatelessWidget {
                 },
               ),
               Pizza(),
+              iceCream(),
+              Chocolate()
             ],
           ),
         ),
@@ -134,8 +136,8 @@ Widget frenchFries(){
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color.fromARGB(255, 245, 245, 3),
-            Color.fromARGB(255, 190, 12, 12)
+            Color.fromARGB(255, 247, 247, 40),
+            Color.fromARGB(255, 214, 48, 48)
           ],
         )
       ),
@@ -169,8 +171,8 @@ Widget Pizza(){
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color.fromARGB(255, 247, 0, 0),
-            Color.fromARGB(255, 43, 255, 1)
+            Color.fromARGB(255, 232, 54, 54),
+            Color.fromARGB(255, 117, 227, 95)
           ],
         )
       ),
@@ -183,5 +185,76 @@ Widget Pizza(){
           ),
         ),
       ),
+    );
+}
+
+Widget Chocolate(){
+  return Container(
+    height: 70,
+    margin: EdgeInsets.all(10),
+    width: double.infinity,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(100),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x80000000),
+            blurRadius: 12.0,
+            offset: Offset(0.0, 5.0),
+          ),
+        ],
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color.fromARGB(255, 254, 0, 0),
+            Color.fromARGB(255, 100, 42, 0)
+          ],
+        )
+      ),
+      child: Center(
+        child: Text(
+          "Chocolate 🍫",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+      ),
+      
+    );
+}
+Widget iceCream(){
+  return Container(
+    height: 70,
+    margin: EdgeInsets.all(10),
+    width: double.infinity,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(100),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x80000000),
+            blurRadius: 12.0,
+            offset: Offset(0.0, 5.0),
+          ),
+        ],
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color.fromARGB(255, 227, 136, 25),
+            Color.fromARGB(255, 255, 255, 255)
+          ],
+        )
+      ),
+      child: Center(
+        child: Text(
+          "Ice Cream 🍦",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+      ),
+      
     );
 }
