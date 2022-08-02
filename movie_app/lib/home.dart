@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/Authentication_service.dart';
-import 'package:movie_app/chat.dart';
+import 'package:movie_app/Donuts_chat.dart';
 import 'package:movie_app/signin.dart';
 import 'package:provider/provider.dart';
-import 'package:movie_app/chat.dart';
+import 'package:movie_app/Donuts_chat.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

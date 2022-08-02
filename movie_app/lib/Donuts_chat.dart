@@ -9,7 +9,7 @@ class Message {
   final DateTime Date;
   final String name;
   final bool isSentbyMe;
-  final String text;
+  final text;
 
   const Message(
       {required this.Date,
@@ -90,6 +90,7 @@ class Chat extends StatelessWidget {
           title: const ListTile(
             title: Text(
               'Donuts 🍩',
+              textAlign: TextAlign.center,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             textColor: Colors.white,
@@ -110,7 +111,8 @@ class Chat extends StatelessWidget {
           ],
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
               child: GroupedListView<Message, DateTime>(
@@ -129,30 +131,37 @@ class Chat extends StatelessWidget {
                       child: Card(
                         margin: EdgeInsets.all(8),
                         child: Container(
+                          
                           decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
                                 color: Color.fromARGB(128, 94, 91, 91),
-                                blurRadius: 2,
-                                offset: Offset(0.0, 2.0),
+                                blurRadius: 12,
+                                offset: Offset(0.0, 5.0),
                               ),
                             ],
                             gradient: const LinearGradient(
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                               colors: [
-                                Color.fromARGB(255, 87, 83, 83),
-                                Color.fromARGB(255, 116, 126, 119)
+                                Color.fromARGB(255, 255, 255, 255),
+                                Color.fromARGB(255, 255, 255, 255)
                               ],
                             )
                           ),
                           height: 25,
-                          width: 150,
-                          child: Text(
-                            '${fromDatetoString(message.Date.month)} ${message.Date.day.toString()}, ${message.Date.year.toString()}',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white, fontSize: 17,fontWeight: FontWeight.w900),
+                          width: 100,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${fromDatetoString(message.Date.month)} ${message.Date.day.toString()}, ${message.Date.year.toString()}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Color.fromARGB(255, 101, 101, 101), fontSize: 14,fontWeight: FontWeight.w500),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -168,14 +177,21 @@ class Chat extends StatelessWidget {
                     color:
                         message.isSentbyMe ? Colors.blueAccent : Colors.white,
                     child: Padding(
+                      
                       padding: EdgeInsets.all(8),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: message.isSentbyMe?CrossAxisAlignment.end:CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
                             '${message.name}',
-                            style: TextStyle(fontSize: 9,color:message.isSentbyMe?Colors.black:Colors.grey),
+                            style: TextStyle(fontSize: 9,color:message.isSentbyMe?Colors.black:Colors.grey),textAlign: TextAlign.left,
                           ),
-                          Text(message.text),
+                          Text(message.text,  style: TextStyle(fontSize: 13,),textAlign: TextAlign.left,),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 3),
+                            child: Text('${message.Date.hour.toString()}:${message.Date.minute.toString()}', style: TextStyle(fontSize: 9,color:message.isSentbyMe?Colors.black:Colors.grey),textAlign: TextAlign.left,),
+                          )                            
                         ],
                       ),
                     ),
@@ -209,9 +225,9 @@ class Chat extends StatelessWidget {
                         hintText: 'Write message...',
                         hintStyle: TextStyle()),
                   ),
-                  leading: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Icon(Icons.add),
+                  leading: InkWell(
+                    enableFeedback: true,splashColor: Colors.black,
+                    child: Image.asset('assets/images/smth.png')
                   ),
                   trailing: TextButton(
                     onPressed: (() {
